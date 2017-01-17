@@ -1,0 +1,54 @@
+create database if not exists ics311sp1701dm;
+
+use ics311sp1701dm;
+
+CREATE TABLE Customer
+(Fname varchar(10),
+ LName varchar(20),
+ AcctNum varchar(4)
+);
+
+load data local infile '/tmp/data-customer.txt' into table Customer;
+
+CREATE TABLE Orders
+(AcctNum varchar(4),
+ OrderNum integer,
+ OrderDate DATE,
+ StoreNum varchar(10),
+ SalesRepNum varchar(1)
+ );
+
+load data local infile '/tmp/data-orders.txt' into table orders;
+
+create table Order_Detail
+(OrderNum integer, 
+ LineNum integer, 
+ ProdNum varchar(21),
+ Qty integer, 
+ Color varchar(6), 
+ UnitPrice decimal(10,2)
+);
+
+load data local infile '/tmp/data-orderdetail.txt' into table order_detail;
+
+create table Product
+(ProdNum varchar(21),
+ ProdName varchar(23),
+ ProdSupy varchar(13),
+ ColorGrp varchar(8),
+ ProdCost decimal
+);
+
+load data local infile '/tmp/data-product.txt' into table Product;
+
+create table SalesRep
+(SalesRepNum varchar(1),
+ SalesFName varchar(5),
+ SalesLName varchar(9),
+ SalesSSN varchar(11),
+ SalesHDate DATE,
+ SalesHRate integer,
+ SalesBonus decimal(10,2)
+);
+
+load data local infile '/tmp/data-salesrep.txt' into table SalesRep;
